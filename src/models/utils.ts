@@ -1,19 +1,9 @@
 import {Card} from "./models.ts";
 
-const generateRandomValues  = (): Card[] => {
-  const board: Card[] = []
+export const generateNewDeck = () =>
+  new Array(8)
+    .fill(null)
+    .flatMap((_, index) => [new Card(index + 1), new Card(index + 1)])
+    .sort((a, b) => a.id.localeCompare(b.id))
 
-  while (board.length < 8) {
-    const value = Math.floor(Math.random() * 8) + 1
 
-    if (board.some((tile) => tile.value === value)) continue
-
-    board.push(new Card(value))
-  }
-
-  return board
-}
-
-export const generateNewBoard = () => {
-  return [...generateRandomValues(), ...generateRandomValues()]
-}

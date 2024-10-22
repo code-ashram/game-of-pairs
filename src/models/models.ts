@@ -1,7 +1,7 @@
-import {generateNewBoard} from "./utils.ts";
+import {generateNewDeck} from "./utils.ts";
 
 export class Card {
-  protected id: string;
+  public id: string;
   public value: number;
   public isOpen: boolean;
 
@@ -16,24 +16,32 @@ export class Card {
   }
 }
 
-class Board {
-  public boardState: Card[];
-  public isCompleteOpen: boolean;
+class Deck {
+  public deckState: Card[];
 
   constructor() {
+    this.deckState = generateNewDeck();
+  }
+}
+
+class Game {
+  public deck: Deck
+  public isCompleteOpen: boolean;
+
+  constructor(deck: Deck) {
     this.isCompleteOpen = false;
-    this.boardState = generateNewBoard();
+    this.deck = deck;
   }
 
-  checkBoard(board: Card[]): boolean {
-    return board.every((card) => card.isOpen)
+  checkDeck(): boolean {
+    return this.deck.deckState.every((card) => card.isOpen)
       ? this.isCompleteOpen = true
       : this.isCompleteOpen = false;
   }
 
-  choseCard(index: number): void {
-    this.boardState[index].turnOverCard();
-    this.checkBoard(this.boardState)
+  choseCard(cardIndex: number): void {
+    this.deck.deckState[cardIndex].turnOverCard();
+    this.checkDeck();
   }
 
   checkCurrentCards(firstCard: Card, secondCard: Card) {
@@ -47,9 +55,15 @@ class Board {
   }
 }
 
-const board = new Board()
+const deck = new Deck();
 
-console.log(board)
+console.log(deck)
+
+
+//
+// const board = new Board()
+//
+// console.log(board)
 
 // board.choseCard(0)
 // board.choseCard(1)
