@@ -1,85 +1,82 @@
-import {generateNewDeck} from "./utils.ts";
+import { generateNewDeck } from './utils.ts'
 
 export class Card {
-  public id: string;
-  public value: number;
-  public isOpen: boolean;
+  public id: string
+  public value: number
+  public isOpen: boolean
 
-  constructor(value: number) {
-    this.id = crypto.randomUUID();
-    this.value = value;
-    this.isOpen = false;
+  constructor (value: number) {
+    this.id = crypto.randomUUID()
+    this.value = value
+    this.isOpen = false
   }
 
-  turnOverCard(): boolean {
-    return this.isOpen = !this.isOpen;
+  flip (): boolean {
+    return this.isOpen = !this.isOpen
   }
 }
 
 class Deck {
-  public deckState: Card[];
+  public deckState: Card[]
 
-  constructor() {
-    this.deckState = generateNewDeck();
+  constructor () {
+    this.deckState = generateNewDeck()
+    this.showCards()
+  }
+
+  showCards () {
+    this.deckState.forEach((card: Card) => card.isOpen = true)
+
+    setTimeout(() => {
+      this.deckState.forEach((card: Card) => card.isOpen = false)
+    }, 3000)
   }
 }
 
 class Game {
   public deck: Deck
-  public isCompleteOpen: boolean;
+  public firstCard: Card | null
+  public secondCard: Card | null
+  public isComplete: boolean
 
-  constructor(deck: Deck) {
-    this.isCompleteOpen = false;
-    this.deck = deck;
+  constructor (deck: Deck) {
+    this.firstCard = null
+    this.secondCard = null
+    this.isComplete = false
+    this.deck = deck
   }
 
-  checkDeck(): boolean {
-    return this.deck.deckState.every((card) => card.isOpen)
-      ? this.isCompleteOpen = true
-      : this.isCompleteOpen = false;
+  private checkDeck (): void {
+    this.isComplete = this.deck.deckState.every((card) => card.isOpen)
   }
 
-  choseCard(cardIndex: number): void {
-    this.deck.deckState[cardIndex].turnOverCard();
-    this.checkDeck();
+  // choseCard (cardIndex: number): void {
+  //   this.deck.deckState[cardIndex].flip()
+  //   this.checkDeck()
+  // }
+
+  openCard (card: Card): void {
+    card.flip()
+    this.checkDeck()
   }
 
-  checkCurrentCards(firstCard: Card, secondCard: Card) {
-    if (firstCard.value === secondCard.value) {
-      firstCard.isOpen = true
-      secondCard.isOpen = true
+  resetPair (): void {
+    if (this.firstCard && this.secondCard) {
+      this.firstCard.isOpen = false
+      this.secondCard.isOpen = false
+    }
+  }
+
+  checkPair (): void {
+    if (this.firstCard && this.secondCard && this.firstCard.value === this.secondCard.value) {
+      this.firstCard.isOpen = true
+      this.secondCard.isOpen = true
     } else {
-      firstCard.isOpen = false
-      secondCard.isOpen = false
+      this.resetPair()
     }
   }
 }
 
-const deck = new Deck();
+const deck = new Deck()
 
 console.log(deck)
-
-
-//
-// const board = new Board()
-//
-// console.log(board)
-
-// board.choseCard(0)
-// board.choseCard(1)
-// board.choseCard(2)
-// board.choseCard(3)
-// board.choseCard(4)
-// board.choseCard(5)
-// board.choseCard(6)
-// board.choseCard(7)
-// board.choseCard(8)
-// board.choseCard(9)
-// board.choseCard(10)
-// board.choseCard(11)
-// board.choseCard(12)
-// board.choseCard(13)
-// board.choseCard(14)
-// board.choseCard(15)
-//
-// console.log(board.isCompleteOpen)
