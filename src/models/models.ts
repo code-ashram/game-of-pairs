@@ -16,7 +16,7 @@ export class Card {
   }
 }
 
-class Deck {
+export class Deck {
   public deckState: Card[]
 
   constructor () {
@@ -33,7 +33,7 @@ class Deck {
   }
 }
 
-class Game {
+export class Game {
   public deck: Deck
   public firstCard: Card | null
   public secondCard: Card | null
