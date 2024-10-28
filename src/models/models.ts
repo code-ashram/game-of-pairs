@@ -21,16 +21,16 @@ export class Deck {
 
   constructor () {
     this.deckState = generateNewDeck()
-    this.showCards()
+    // this.showCards()
   }
 
-  showCards () {
-    this.deckState.forEach((card: Card) => card.isOpen = true)
-
-    setTimeout(() => {
-      this.deckState.forEach((card: Card) => card.isOpen = false)
-    }, 3000)
-  }
+  // showCards () {
+  //   this.deckState.forEach((card: Card) => card.isOpen = true)
+  //
+  //   setTimeout(() => {
+  //     this.deckState.forEach((card: Card) => card.isOpen = false)
+  //   }, 3000)
+  // }
 }
 
 export class Game {

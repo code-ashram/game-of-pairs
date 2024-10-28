@@ -1,6 +1,6 @@
 import './App.scss'
 import { Button } from '@nextui-org/react'
-import Deck from './components/Deck'
+import Board from './components/Deck'
 
 function App () {
 
@@ -23,7 +23,7 @@ function App () {
           </div>
         </div>
 
-        <Deck />
+        <Board />
       </div>
     </>
   )

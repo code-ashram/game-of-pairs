@@ -1,1 +1,1 @@
-export {default} from './Deck.tsx'
+export {default} from './Board.tsx'
