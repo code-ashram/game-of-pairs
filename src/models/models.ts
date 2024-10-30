@@ -17,20 +17,11 @@ export class Card {
 }
 
 export class Deck {
-  public deckState: Card[]
+  public cards: Card[]
 
   constructor () {
-    this.deckState = generateNewDeck()
-    // this.showCards()
+    this.cards = generateNewDeck()
   }
-
-  // showCards () {
-  //   this.deckState.forEach((card: Card) => card.isOpen = true)
-  //
-  //   setTimeout(() => {
-  //     this.deckState.forEach((card: Card) => card.isOpen = false)
-  //   }, 3000)
-  // }
 }
 
 export class Game {
@@ -39,21 +30,24 @@ export class Game {
   public secondCard: Card | null
   public isComplete: boolean
 
-  constructor (deck: Deck) {
+  constructor () {
     this.firstCard = null
     this.secondCard = null
     this.isComplete = false
-    this.deck = deck
+    this.deck = new Deck()
   }
 
   private checkDeck (): void {
-    this.isComplete = this.deck.deckState.every((card) => card.isOpen)
+    this.isComplete = this.deck.cards.every((card) => card.isOpen)
   }
 
-  // choseCard (cardIndex: number): void {
-  //   this.deck.deckState[cardIndex].flip()
-  //   this.checkDeck()
-  // }
+  showCards () {
+    this.deck.cards.forEach((card: Card) => card.isOpen = true)
+
+    setTimeout(() => {
+      this.deck.cards.forEach((card: Card) => card.isOpen = false)
+    }, 3000)
+  }
 
   openCard (card: Card): void {
     card.flip()
@@ -76,7 +70,3 @@ export class Game {
     }
   }
 }
-
-const deck = new Deck()
-
-console.log(deck)
