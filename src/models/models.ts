@@ -51,6 +51,7 @@ export class Game {
 
   openCard (card: Card): void {
     card.flip()
+    this.deck = {...this.deck, cards: this.deck.cards.map((prevCard) => prevCard.id === card.id ? card : prevCard)}
     this.checkDeck()
   }
 
