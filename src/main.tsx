@@ -4,6 +4,7 @@ import { NextUIProvider } from '@nextui-org/react'
 
 import App from './App.tsx'
 
+// TODO: rewrite to scss modules
 import './index.css'
 
 createRoot(document.getElementById('root')!).render(
@@ -12,5 +13,4 @@ createRoot(document.getElementById('root')!).render(
       <App />
     </NextUIProvider>
   </StrictMode>
-
 )

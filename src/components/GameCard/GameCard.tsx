@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Card } from '../../../models/models.ts'
+import { Card } from '../../models'
 
 type Props = {
   card: Card
