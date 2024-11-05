@@ -6,13 +6,19 @@ export class Game {
   public deck: Deck
   private firstCard: Card | null
   private secondCard: Card | null
+  public step: number
   public isComplete: boolean
 
   constructor () {
     this.firstCard = null
     this.secondCard = null
     this.isComplete = false
+    this.step = 0
     this.deck = new Deck()
+  }
+
+  private addStep (): void {
+    this.step += 1
   }
 
   private checkDeck (): void {
@@ -28,6 +34,8 @@ export class Game {
     else if (!this.secondCard) this.secondCard = card
 
     if (this.firstCard && this.secondCard) this.checkPair()
+
+    this.addStep()
   }
 
   private resetPair (): void {
