@@ -17,6 +17,12 @@ export class Game {
     this.deck = new Deck()
   }
 
+  public resetDeck = () => {
+    this.isComplete = false
+    this.step = 0
+    this.deck = new Deck()
+  }
+
   private addStep (): void {
     this.step += 1
   }

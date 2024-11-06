@@ -1,33 +1,30 @@
-import { FC } from 'react'
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from '@nextui-org/react'
+import { FC } from 'react'
 
 type Props = {
+  isOpen: boolean
   steps: number
+  onReset: () => void
 }
 
-const Message: FC<Props> = ({ steps }) => {
-  const { isOpen, onOpenChange } = useDisclosure()
+const Message: FC<Props> = ({ isOpen, steps, onReset }) => {
+  const { onOpenChange } = useDisclosure()
 
   return (
     <>
-      <Modal isOpen={isOpen} onOpenChange={onOpenChange} isDismissable={false} isKeyboardDismissDisabled={true}>
+      <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent>
-          {(onClose) => (
+          {() => (
             <>
-              <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
+              <ModalHeader className="flex flex-col gap-1">Congratulations!</ModalHeader>
               <ModalBody>
                 <p>
-                  You are winner! Your steps: {steps}
+                  You're winner! Your steps: {steps}
                 </p>
               </ModalBody>
-
               <ModalFooter>
-                <Button color="danger" variant="light" onPress={onClose}>
-                  Close
-                </Button>
-
-                <Button color="primary" onPress={onClose}>
-                  Play again!
+                <Button color="primary" onPress={onReset}>
+                  New Game
                 </Button>
               </ModalFooter>
             </>
