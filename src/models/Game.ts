@@ -1,6 +1,7 @@
 import { Deck } from './Deck.ts'
 import { Card } from './Card.ts'
 import { DELAY_MS } from '../constants'
+import { showCards } from '../utils'
 
 export class Game {
   public deck: Deck
@@ -15,12 +16,14 @@ export class Game {
     this.isComplete = false
     this.step = 0
     this.deck = new Deck()
+    showCards(this.deck.cards)
   }
 
   public resetDeck = () => {
     this.isComplete = false
     this.step = 0
     this.deck = new Deck()
+    showCards(this.deck.cards)
   }
 
   private addStep (): void {
