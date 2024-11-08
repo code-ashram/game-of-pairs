@@ -17,11 +17,13 @@ const Message: FC<Props> = ({ isOpen, steps, onReset }) => {
           {() => (
             <>
               <ModalHeader className="flex flex-col gap-1">Congratulations!</ModalHeader>
+
               <ModalBody>
                 <p>
                   You're winner! Your steps: {steps}
                 </p>
               </ModalBody>
+
               <ModalFooter>
                 <Button color="primary" onPress={onReset}>
                   New Game

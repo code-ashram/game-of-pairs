@@ -81,4 +81,9 @@
       transform: rotateY(180deg); // Makes the back face visible when rotated
     }
   }
+
+  .skeleton {
+    border-radius: 10px;
+    background-color: #6d7373 !important;
+  }
 }

@@ -6,7 +6,7 @@ export class Card {
   constructor(value: number) {
     this.id = crypto.randomUUID();
     this.value = value;
-    this.isOpen = false;
+    this.isOpen = true;
   }
 
   flip(): boolean {
