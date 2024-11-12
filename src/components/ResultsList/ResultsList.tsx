@@ -8,7 +8,7 @@ type Props = {
 
 const ResultsList: FC<Props> = ({ list }) => (
   <ul className="result">
-    {list.map((result) => <ResultItem key={result.id} result={result} />)}
+    {list?.map((result) => <ResultItem key={result.id} result={result} />)}
   </ul>
 )
 export default ResultsList

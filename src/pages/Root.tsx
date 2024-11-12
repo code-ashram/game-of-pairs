@@ -36,10 +36,11 @@ const Root = () => {
   }, [])
 
   return (
-    <div>
+    <main>
       <h1 className="mb-8 text-4xl font-bold underline">Game Of Pairs</h1>
+
       <Board game={gameRef.current} onPress={handleFlipCard} onReset={handleResetGame} />
-    </div>
+    </main>
   )
 }
 
