@@ -5,7 +5,7 @@ import Message from '../Message/Message.tsx'
 import GameDeck from '../GameDeck'
 
 import { Card, Game } from '../../models'
-
+import { Link } from 'react-router-dom'
 
 type Props = {
   game: Game | null
@@ -19,9 +19,17 @@ const Board: FC<Props> = ({ game, onPress, onReset }) => {
     <>
       <div className="wrapper">
         <div className="controlPanel">
-          <Button color="primary" onPress={onReset}>
-            Reset game
-          </Button>
+          <div className="controlPanelButtons">
+            <Button color="primary" onPress={onReset}>
+              Reset game
+            </Button>
+
+            <Link to={`results`}>
+              <Button className="ml-3" color="primary" variant="bordered">
+                Results
+              </Button>
+            </Link>
+          </div>
 
           <div>
             <p className="text-black text-lg">{game ? game.step : 0}</p>
