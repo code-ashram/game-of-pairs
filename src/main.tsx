@@ -19,11 +19,11 @@ const router = createBrowserRouter([
   {
     path: 'results',
     element: <Results/>,
+    loader: loader,
     children: [
       {
         path: 'results/:resultId',
         element: <ResultDetails />,
-        loader: loader
       }
     ]
   }

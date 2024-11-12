@@ -1,13 +1,14 @@
-import { Link, useLoaderData } from 'react-router-dom'
+import { Link, LoaderFunction, useLoaderData } from 'react-router-dom'
 import { FC } from 'react'
 
 import ResultsList from '../components/ResultsList'
-import { Result } from '../models'
 
 import { getResults } from '../api/client.ts'
+import { Result } from '../models'
+
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const loader = async () => {
+export const loader: LoaderFunction = async () => {
   const results = await getResults()
 
   return { results }
@@ -15,7 +16,9 @@ export const loader = async () => {
 
 const Results: FC = () => {
 
-  const results = useLoaderData() as Result[]
+  const { results }  = useLoaderData()
+
+  console.log(results)
 
   return (
     <>
