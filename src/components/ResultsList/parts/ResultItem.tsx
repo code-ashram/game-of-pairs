@@ -1,8 +1,8 @@
 import { FC } from 'react'
-import { Result } from '../../../models'
+import { Rank } from '../../../models'
 
 type Props = {
-  result: Result
+  result: Rank
 }
 
 const ResultItem: FC<Props> = ({ result }) => {

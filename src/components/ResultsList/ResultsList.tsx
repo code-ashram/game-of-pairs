@@ -1,9 +1,9 @@
-import { Result } from '../../models'
+import { Rank } from '../../models'
 import ResultItem from './parts/ResultItem.tsx'
 import { FC } from 'react'
 
 type Props = {
-  list: Result[]
+  list: Rank[]
 }
 
 const ResultsList: FC<Props> = ({ list }) => (

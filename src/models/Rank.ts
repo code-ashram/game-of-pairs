@@ -1,4 +1,4 @@
-export type Result = {
+export type Rank = {
   id: number
   user: string
   time: string

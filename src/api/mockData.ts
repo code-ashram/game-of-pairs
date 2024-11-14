@@ -1,6 +1,6 @@
-import { Result } from '../models'
+import { Rank } from '../models'
 
-const mockData: Result[] = [
+const mockData: Rank[] = [
   {
     id: 6,
     user: 'Sachinandan Kishor',
