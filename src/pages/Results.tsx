@@ -7,7 +7,7 @@ import { getResults } from '../api/client.ts'
 import { Rank } from '../models'
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const loader: LoaderFunction = async (): Promise<Record<'ranks', Rank[]>> => {
+export const resultsLoader: LoaderFunction = async (): Promise<Record<'ranks', Rank[]>> => {
   const ranks = await getResults()
   return { ranks }
 }

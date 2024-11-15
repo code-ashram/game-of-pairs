@@ -5,9 +5,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import Root from './pages/Root.tsx'
 import Results from './pages/Results.tsx'
-import ResultDetails from './pages/ResultDetails.tsx'
+import ResultDetails, { resultLoader } from './pages/ResultDetails.tsx'
 
-import { loader } from './pages/Results.tsx'
+import { resultsLoader } from './pages/Results.tsx'
 
 import './index.scss'
 
@@ -18,14 +18,13 @@ const router = createBrowserRouter([
   },
   {
     path: 'results',
-    element: <Results/>,
-    loader: loader,
-    children: [
-      {
-        path: 'results/:resultId',
-        element: <ResultDetails />,
-      }
-    ]
+    element: <Results />,
+    loader: resultsLoader
+  },
+  {
+    path: '/results/:resultId',
+    element: <ResultDetails />,
+    loader: resultLoader
   }
 ])
 
