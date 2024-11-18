@@ -1,5 +1,4 @@
 import { FC } from 'react'
-import { Link } from 'react-router-dom'
 
 import ResultItem from './parts/ResultItem.tsx'
 
@@ -14,9 +13,7 @@ const ResultsList: FC<Props> = ({ list }) => {
   return (
     <ul className="result">
       {list?.map((result) =>
-        <Link to={`/results/${result.id}`} key={result.id}>
-          <ResultItem result={result} />
-        </Link>
+        <ResultItem result={result} link={`/results/${result.id}`} />
       )}
     </ul>
   )

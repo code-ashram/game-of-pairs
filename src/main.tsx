@@ -4,10 +4,10 @@ import { NextUIProvider } from '@nextui-org/react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import Root from './pages/Root.tsx'
-import Results from './pages/Results.tsx'
-import ResultDetails, { resultLoader } from './pages/ResultDetails.tsx'
+import LeaderBoard from './pages/LeaderBoard.tsx'
+import RankDetail, { resultLoader } from './pages/RankDetail.tsx'
 
-import { resultsLoader } from './pages/Results.tsx'
+import { resultsLoader } from './pages/LeaderBoard.tsx'
 
 import './index.scss'
 
@@ -18,12 +18,12 @@ const router = createBrowserRouter([
   },
   {
     path: 'results',
-    element: <Results />,
+    element: <LeaderBoard />,
     loader: resultsLoader
   },
   {
     path: '/results/:resultId',
-    element: <ResultDetails />,
+    element: <RankDetail />,
     loader: resultLoader
   }
 ])

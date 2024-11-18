@@ -12,7 +12,7 @@ export const resultsLoader: LoaderFunction = async (): Promise<Record<'ranks', R
   return { ranks }
 }
 
-const Results: FC = () => {
+const LeaderBoard: FC = () => {
   const { ranks } = useLoaderData() as Record<'ranks', Rank[]>
 
   return (
@@ -30,4 +30,4 @@ const Results: FC = () => {
   )
 }
 
-export default Results
+export default LeaderBoard

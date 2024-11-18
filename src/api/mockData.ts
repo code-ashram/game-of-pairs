@@ -1,52 +1,59 @@
 import { Rank } from '../models'
 
+import kishor from '../img/kishor.jpg'
+import kiryadev from '../img/kiryadev.jpg'
+import me from '../img/me.jpg'
+import anechka from '../img/anechka.jpg'
+import barney from '../img/barney.jpg'
+import sashko from '../img/sashko.jpg'
+
 const mockData: Rank[] = [
   {
     id: 6,
     user: 'Sachinandan Kishor',
-    time: '16.11.2024',
+    time: '2024.09.13 08:16:12',
     steps: 16,
-    photo: 'url',
+    photo: kishor,
     comment: 'Чушь!'
   },
   {
     id: 5,
     user: 'Kiryadev',
-    time: '15.11.2024',
+    time: '2024.07.31 12:12:22',
     steps: 18,
-    photo: 'url',
+    photo: kiryadev,
     comment: 'Ахаххаввха!'
   },
   {
     id: 4,
     user: 'Anechka',
-    time: '14.11.2024',
+    time: '2024.11.13 14:12:32',
     steps: 20,
-    photo: 'url',
+    photo: anechka,
     comment: 'Вредина!'
   },
   {
     id: 3,
     user: 'Andrey',
-    time: '13.11.2024',
+    time: '2024.11.14 11:32:42',
     steps: 22,
-    photo: 'url',
+    photo: me,
     comment: '\\o'
   },
   {
     id: 2,
     user: 'Barney',
-    time: '12.11.2024',
+    time: '2024.11.15 13:41:52',
     steps: 24,
-    photo: 'url',
+    photo: barney,
     comment: 'Что ха х*ня?'
   },
   {
     id: 1,
     user: 'Sashko',
-    time: '11.11.2024',
+    time: '2024.11.16 20:40:41',
     steps: 22,
-    photo: 'url',
+    photo: sashko,
     comment: 'Вааще агонь!'
   },
 ]
