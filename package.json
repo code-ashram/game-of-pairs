@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@nextui-org/react": "^2.4.8",
+    "crypto-browserify": "^3.12.1",
     "framer-motion": "^11.11.10",
     "json-server": "^1.0.0-beta.3",
     "react": "^18.3.1",

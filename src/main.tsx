@@ -5,9 +5,10 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import Root from './pages/Root.tsx'
 import LeaderBoard from './pages/LeaderBoard.tsx'
-import RankDetail, { resultLoader } from './pages/RankDetail.tsx'
+import RankDetail from './pages/RankDetail.tsx'
+// import RankDetail, { rankLoader } from './pages/RankDetail.tsx'
 
-import { resultsLoader } from './pages/LeaderBoard.tsx'
+// import { ranksLoader } from './pages/LeaderBoard.tsx'
 
 import './index.scss'
 
@@ -17,14 +18,14 @@ const router = createBrowserRouter([
     element: <Root />
   },
   {
-    path: 'results',
+    path: 'ranks',
     element: <LeaderBoard />,
-    loader: resultsLoader
+    // loader: ranksLoader
   },
   {
-    path: '/results/:resultId',
+    path: '/ranks/:rankId',
     element: <RankDetail />,
-    loader: resultLoader
+    // loader: rankLoader
   }
 ])
 

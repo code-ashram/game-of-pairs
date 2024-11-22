@@ -1,19 +1,21 @@
-import { FC } from 'react'
-import { Link, LoaderFunction, useLoaderData } from 'react-router-dom'
+import { FC, useContext } from 'react'
+import { Link } from 'react-router-dom'
+import RanksList from '../components/RanksList'
+import RanksContext from '../srore/RanksContext.ts'
+// import { Link, LoaderFunction, useLoaderData } from 'react-router-dom'
 
-import ResultsList from '../components/ResultsList'
-
-import { getResults } from '../api/client.ts'
-import { Rank } from '../models'
+// import { getranks } from '../api/client.ts'
+// import { Rank } from '../models'
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const resultsLoader: LoaderFunction = async (): Promise<Record<'ranks', Rank[]>> => {
-  const ranks = await getResults()
-  return { ranks }
-}
+// export const ranksLoader: LoaderFunction = async (): Promise<Record<'ranks', Rank[]>> => {
+//   const ranks = await getranks()
+//   return { ranks }
+// }
 
 const LeaderBoard: FC = () => {
-  const { ranks } = useLoaderData() as Record<'ranks', Rank[]>
+  // const { ranks } = useLoaderData() as Record<'ranks', Rank[]>
+  const { ranks } = useContext(RanksContext)
 
   return (
     <>
@@ -22,9 +24,9 @@ const LeaderBoard: FC = () => {
       </Link>
 
       <div className="wrapper">
-        <h2 className="mb-5 text-xl font-bold text-black">Results</h2>
+        <h2 className="mb-5 text-xl font-bold text-black">ranks</h2>
 
-        <ResultsList list={ranks} />
+        <RanksList ranksSource={ranks} />
       </div>
     </>
   )

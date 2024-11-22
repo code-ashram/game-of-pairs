@@ -14,3 +14,6 @@ export const convertTime = (date: string) => new Date(date).toLocaleString('en-U
   hour: 'numeric',
   minute: 'numeric'
 })
+
+export const uuidToNumber = (uuid: string): string =>
+  parseInt(uuid.replace(/-/g, '').slice(0, 13), 16).toString()

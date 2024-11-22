@@ -1,13 +1,18 @@
-import { useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useReducer, useRef, useState } from 'react'
+import { rankReducer } from '../srore/RanksReducer.ts'
+import RanksContext from '../srore/RanksContext.ts'
 
 import Board from '../components/Board'
 
 import { Card, Game } from '../models'
 import { DELAY_MS } from '../constants'
 
+import mockData from '../api/mockData.ts'
+
 import '../App.scss'
 
 const Root = () => {
+  const [ranks, dispatchRanks] = useReducer(rankReducer, mockData)
   const gameRef = useRef<Game | null>(null)
   const [, setGameState] = useState(false)
 
@@ -21,6 +26,7 @@ const Root = () => {
   }
 
   const handleResetGame = () => {
+    // if (gameRef.current?.isComplete)
     gameRef.current = null
     setTimeout(() => gameRef.current = new Game(), DELAY_MS)
   }
@@ -39,7 +45,9 @@ const Root = () => {
     <main>
       <h1 className="mb-8 text-4xl font-bold underline">Game Of Pairs</h1>
 
-      <Board game={gameRef.current} onPress={handleFlipCard} onReset={handleResetGame} />
+      <RanksContext.Provider value={{ranks, dispatch: dispatchRanks}}>
+        <Board game={gameRef.current} onPress={handleFlipCard} onReset={handleResetGame} />
+      </RanksContext.Provider>
     </main>
   )
 }

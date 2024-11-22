@@ -1,5 +1,5 @@
 export type Rank = {
-  id: number
+  id: string
   user: string
   time: string
   steps: number
