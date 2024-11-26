@@ -26,7 +26,7 @@ const Board: FC<Props> = ({ game, onPress, onReset }) => {
 
             <Link to={`ranks`}>
               <Button className="ml-3" color="primary" variant="bordered">
-                ranks
+                Ranks
               </Button>
             </Link>
           </div>

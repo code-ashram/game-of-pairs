@@ -7,7 +7,7 @@ export const showCards = (cards: Card[]): void => {
 
 export const emptyDeck = new Array(16).fill(null)
 
-export const convertTime = (date: string) => new Date(date).toLocaleString('en-US', {
+export const convertTime = (date: string | Date) => new Date(date).toLocaleString('en-US', {
   day: '2-digit',
   month: 'long',
   year: 'numeric',

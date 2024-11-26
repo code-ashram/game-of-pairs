@@ -2,24 +2,24 @@ import { Rank } from '../models'
 
 import user from '../img/user.png'
 
-export const ACTION_TYPE = 'ADD'
+export const enum ACTION_TYPE {
+  ADD
+}
 
 export type Action = {
-  type: typeof ACTION_TYPE
-  payload: {
-    rank: Rank
-  }
+  type: ACTION_TYPE
+  payload: number
 }
 
 export const rankReducer = (state: Rank[], { type, payload }: Action) => {
   switch (type) {
-    case 'ADD':
+    case ACTION_TYPE.ADD:
       return [
         {
-          id: crypto.randomUUID(),
+          id: String(Math.random()),
           user: 'Unknown user',
           time: new Date().toISOString(),
-          steps: payload.rank.steps,
+          steps: payload,
           photo: user,
           comment: 'Интересная игра!'
         },

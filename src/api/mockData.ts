@@ -6,11 +6,10 @@ import me from '../img/me.jpg'
 import anechka from '../img/anechka.jpg'
 import barney from '../img/barney.jpg'
 import sashko from '../img/sashko.jpg'
-import { uuidToNumber } from '../utils'
 
 const mockData: Rank[] = [
   {
-    id: uuidToNumber(crypto.randomUUID()),
+    id: "1",
     user: 'Sachinandan Kishor',
     time: '2024.09.13 08:16:12',
     steps: 16,
@@ -18,7 +17,7 @@ const mockData: Rank[] = [
     comment: 'Чушь!'
   },
   {
-    id: uuidToNumber(crypto.randomUUID()),
+    id: "2",
     user: 'Kiryadev',
     time: '2024.07.31 12:12:22',
     steps: 18,
@@ -26,7 +25,7 @@ const mockData: Rank[] = [
     comment: 'Ахаххаввха!'
   },
   {
-    id: uuidToNumber(crypto.randomUUID()),
+    id: "3",
     user: 'Anechka',
     time: '2024.11.13 14:12:32',
     steps: 20,
@@ -34,7 +33,7 @@ const mockData: Rank[] = [
     comment: 'Вредина!'
   },
   {
-    id: uuidToNumber(crypto.randomUUID()),
+    id: "4",
     user: 'Andrey',
     time: '2024.11.14 11:32:42',
     steps: 22,
@@ -42,7 +41,7 @@ const mockData: Rank[] = [
     comment: '\\o'
   },
   {
-    id: uuidToNumber(crypto.randomUUID()),
+    id: "5",
     user: 'Barney',
     time: '2024.11.15 13:41:52',
     steps: 24,
@@ -50,7 +49,7 @@ const mockData: Rank[] = [
     comment: 'Что ха х*ня?'
   },
   {
-    id: uuidToNumber(crypto.randomUUID()),
+    id: "6",
     user: 'Sashko',
     time: '2024.11.16 20:40:41',
     steps: 22,

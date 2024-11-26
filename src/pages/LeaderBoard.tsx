@@ -1,7 +1,7 @@
 import { FC, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import RanksList from '../components/RanksList'
-import RanksContext from '../srore/RanksContext.ts'
+import RanksContext from '../store/RanksContext.ts'
 // import { Link, LoaderFunction, useLoaderData } from 'react-router-dom'
 
 // import { getranks } from '../api/client.ts'
@@ -24,7 +24,7 @@ const LeaderBoard: FC = () => {
       </Link>
 
       <div className="wrapper">
-        <h2 className="mb-5 text-xl font-bold text-black">ranks</h2>
+        <h2 className="mb-5 text-xl font-bold text-black">Ranks</h2>
 
         <RanksList ranksSource={ranks} />
       </div>

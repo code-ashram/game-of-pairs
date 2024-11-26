@@ -1,5 +1,5 @@
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from '@nextui-org/react'
-import { FC } from 'react'
+import { FC, FormEvent } from 'react'
 
 type Props = {
   isOpen: boolean
@@ -15,7 +15,10 @@ const Message: FC<Props> = ({ isOpen, steps, onReset }) => {
       <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent>
           {() => (
-            <>
+            <form onSubmit={(e: FormEvent) => {
+              e.preventDefault()
+              onReset()
+            }}>
               <ModalHeader className="flex flex-col gap-1">Congratulations!</ModalHeader>
 
               <ModalBody>
@@ -25,11 +28,11 @@ const Message: FC<Props> = ({ isOpen, steps, onReset }) => {
               </ModalBody>
 
               <ModalFooter>
-                <Button color="primary" onPress={onReset}>
+                <Button color="primary" type="submit">
                   New Game
                 </Button>
               </ModalFooter>
-            </>
+            </form>
           )}
         </ModalContent>
       </Modal>
