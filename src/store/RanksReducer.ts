@@ -16,7 +16,7 @@ export const rankReducer = (state: Rank[], { type, payload }: Action) => {
     case ACTION_TYPE.ADD:
       return [
         {
-          id: String(Math.random()),
+          id: 16,
           user: 'Unknown user',
           time: new Date().toISOString(),
           steps: payload,

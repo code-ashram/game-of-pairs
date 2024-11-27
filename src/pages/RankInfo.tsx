@@ -1,5 +1,5 @@
 import { FC, useContext } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { Image } from '@nextui-org/react'
 
 import RanksContext from '../store/RanksContext.ts'
@@ -22,11 +22,7 @@ const RankInfo: FC = () => {
 
   return (
     <>
-      <Link to={`/`}>
-        <h1 className="mb-8 text-4xl font-bold underline">Game Of Pairs</h1>
-      </Link>
-
-      <div className="wrapper user h-[625px]">
+      <div className="user">
         <h2 className="text-xl font-bold text-black">Rank info:</h2>
 
         <div className="justify-self-center">

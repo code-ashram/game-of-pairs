@@ -1,5 +1,5 @@
-import { FC, useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { FC, useContext, useEffect } from 'react'
+
 import RanksList from '../components/RanksList'
 import RanksContext from '../store/RanksContext.ts'
 // import { Link, LoaderFunction, useLoaderData } from 'react-router-dom'
@@ -17,17 +17,13 @@ const LeaderBoard: FC = () => {
   // const { ranks } = useLoaderData() as Record<'ranks', Rank[]>
   const { ranks } = useContext(RanksContext)
 
+  useEffect(() => console.log(ranks), [ranks])
+
   return (
     <>
-      <Link to={`/`}>
-        <h1 className="mb-8 text-4xl font-bold underline">Game Of Pairs</h1>
-      </Link>
+      <h2 className="mb-5 text-xl font-bold text-black">Ranks</h2>
 
-      <div className="wrapper">
-        <h2 className="mb-5 text-xl font-bold text-black">Ranks</h2>
-
-        <RanksList ranksSource={ranks} />
-      </div>
+      <RanksList ranksSource={ranks} />
     </>
   )
 }

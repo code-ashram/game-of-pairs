@@ -3,6 +3,7 @@ import { Avatar } from '@nextui-org/react'
 
 import { Rank } from '../../../models'
 import { Link } from 'react-router-dom'
+import { convertTime } from '../../../utils'
 
 type Props = {
   rank: Rank
@@ -20,7 +21,7 @@ const rankItem: FC<Props> = ({ rank, link }) => {
 
         <div className="itemInfo text-left text-black">
           <p className="itemUser">{rank.user}</p>
-          <p className="itemTime">{rank.time}</p>
+          <p className="itemTime">{convertTime(rank.time)}</p>
           <p className="itemSteps">steps: {rank.steps}</p>
         </div>
       </Link>
