@@ -1,7 +1,15 @@
 import '../App.scss'
-import { Link, Outlet } from 'react-router-dom'
+import { Link, Outlet, useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 
 const Home = () => {
+  const navigate = useNavigate()
+  const [game, setGame] = useState<boolean>(true)
+
+  useEffect(() => {
+    if (game) navigate('/game')
+    setGame(false)
+  }, [game, navigate])
 
   return (
     <main>

@@ -1,6 +1,7 @@
 import { Rank } from '../models'
 
 import user from '../img/user.png'
+import { getRandomInt } from '../utils'
 
 export const enum ACTION_TYPE {
   ADD
@@ -16,7 +17,7 @@ export const rankReducer = (state: Rank[], { type, payload }: Action) => {
     case ACTION_TYPE.ADD:
       return [
         {
-          id: 16,
+          id: String(getRandomInt()),
           user: 'Unknown user',
           time: new Date().toISOString(),
           steps: payload,

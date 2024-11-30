@@ -6,10 +6,11 @@ import me from '../img/me.jpg'
 import anechka from '../img/anechka.jpg'
 import barney from '../img/barney.jpg'
 import sashko from '../img/sashko.jpg'
+import { getRandomInt } from '../utils'
 
 const mockData: Rank[] = [
   {
-    id: "1",
+    id: String(getRandomInt()),
     user: 'Sachinandan Kishor',
     time: new Date('2024.09.13 08:16:12').toISOString(),
     steps: 16,
@@ -17,7 +18,7 @@ const mockData: Rank[] = [
     comment: 'Чушь!'
   },
   {
-    id: "2",
+    id: String(getRandomInt()),
     user: 'Kiryadev',
     time: new Date('2024.07.31 12:12:22').toISOString(),
     steps: 18,
@@ -25,7 +26,7 @@ const mockData: Rank[] = [
     comment: 'Ахаххаввха!'
   },
   {
-    id: "3",
+    id: String(getRandomInt()),
     user: 'Anechka',
     time: new Date('2024.11.13 14:12:32').toISOString(),
     steps: 20,
@@ -33,7 +34,7 @@ const mockData: Rank[] = [
     comment: 'Вредина!'
   },
   {
-    id: "4",
+    id: String(getRandomInt()),
     user: 'Andrey',
     time: new Date('2024.11.14 11:32:42').toISOString(),
     steps: 22,
@@ -41,7 +42,7 @@ const mockData: Rank[] = [
     comment: '\\o'
   },
   {
-    id: "5",
+    id: String(getRandomInt()),
     user: 'Barney',
     time: new Date('2024.11.15 13:41:52').toISOString(),
     steps: 24,
@@ -49,7 +50,7 @@ const mockData: Rank[] = [
     comment: 'Что ха х*ня?'
   },
   {
-    id: "6",
+    id: String(getRandomInt()),
     user: 'Sashko',
     time: new Date('2024.11.16 20:40:41').toISOString(),
     steps: 22,
