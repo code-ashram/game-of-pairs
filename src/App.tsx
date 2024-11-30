@@ -6,20 +6,19 @@ import AppRouter from './routes/AppRouter.tsx'
 import { rankReducer } from './store/RanksReducer.ts'
 import RanksContext from './store/RanksContext.ts'
 
-import mockData from './api/mockData.ts'
-
 import './index.scss'
+import { ranksLS } from './utils'
 
 export const App: FC = () => {
-  const [ranks, dispatch] = useReducer(rankReducer, mockData)
+  const [ranks, dispatch] = useReducer(rankReducer, ranksLS)
 
   return (
-    // <StrictMode>
+    <StrictMode>
       <NextUIProvider>
         <RanksContext.Provider value={{ ranks, dispatch }}>
           <AppRouter />
         </RanksContext.Provider>
       </NextUIProvider>
-    // </StrictMode>
+    </StrictMode>
   )
 }

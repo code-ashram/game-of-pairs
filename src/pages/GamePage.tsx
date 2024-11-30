@@ -7,6 +7,7 @@ import { ACTION_TYPE } from '../store/RanksReducer.ts'
 
 import { Card, Game } from '../models'
 import { DELAY_MS } from '../constants'
+import { addRank } from '../utils'
 
 const GamePage: FC = () => {
   const { ranks: context, dispatch } = useContext(RanksContext)
@@ -43,8 +44,11 @@ const GamePage: FC = () => {
 
   useEffect(() => console.log(context), [context])
 
+  useEffect(() => {addRank(context)}, [context])
+
   return (
     <Board game={gameRef.current} onPress={handleFlipCard} onReset={handleResetGame} />
-)}
+  )
+}
 
 export default GamePage

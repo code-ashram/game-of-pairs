@@ -1,9 +1,9 @@
 import { createContext, Dispatch } from 'react'
 
 import { Action } from './RanksReducer.ts'
-import mockData from '../api/mockData.ts'
 
 import { Rank } from '../models'
+import { ranksLS } from '../utils'
 
 type ContextType = {
   ranks: Rank[];
@@ -11,7 +11,7 @@ type ContextType = {
 }
 
 const initialValue: ContextType = {
-  ranks: mockData,
+  ranks: ranksLS,
   dispatch: () => {}
 }
 
