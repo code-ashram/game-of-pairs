@@ -1,7 +1,8 @@
-import { FC, useContext, useEffect } from 'react'
+import { FC, useEffect, useMemo } from 'react'
 
 import RanksList from '../components/RanksList'
-import RanksContext from '../store/RanksContext.ts'
+import { getRanks } from '../utils'
+
 // import { Link, LoaderFunction, useLoaderData } from 'react-router-dom'
 
 // import { getranks } from '../api/client.ts'
@@ -15,8 +16,7 @@ import RanksContext from '../store/RanksContext.ts'
 
 const LeaderBoard: FC = () => {
   // const { ranks } = useLoaderData() as Record<'ranks', Rank[]>
-  const { ranks } = useContext(RanksContext)
-
+  const ranks = useMemo(() => getRanks(), [])
   useEffect(() => console.log(ranks), [ranks])
 
   return (

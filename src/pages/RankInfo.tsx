@@ -1,9 +1,8 @@
-import { FC, useContext } from 'react'
+import { FC, useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import { Image } from '@nextui-org/react'
 
-import RanksContext from '../store/RanksContext.ts'
-import { convertTime } from '../utils'
+import { convertTime, getRanks } from '../utils'
 
 // eslint-disable-next-line react-refresh/only-export-components
 // export const rankLoader: LoaderFunction = async ({ params }): Promise<Record<'rank', Rank>> => {
@@ -13,12 +12,13 @@ import { convertTime } from '../utils'
 
 const RankInfo: FC = () => {
   // const { rank } = useLoaderData() as Record<'rank', Rank>
+  const ranks = useMemo(() => getRanks(), [])
   const { rankId } = useParams()
-  const { ranks } = useContext(RanksContext)
 
-  const rank = rankId
-    ? ranks.find((rank) => rank.id === rankId)
-    : null
+  const rank = useMemo(() =>
+    rankId
+      ? ranks.find((rank) => rank.id === rankId)
+      : null, [rankId, ranks])
 
   return (
     <>

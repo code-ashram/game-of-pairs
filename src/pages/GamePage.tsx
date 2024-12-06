@@ -1,16 +1,12 @@
-import { FC, useContext, useEffect, useRef, useState } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 
 import Board from '../components/Board'
 
-import RanksContext from '../store/RanksContext.ts'
-import { ACTION_TYPE } from '../store/RanksReducer.ts'
-
 import { Card, Game } from '../models'
 import { DELAY_MS } from '../constants'
-import { addRank } from '../utils'
+import { addRank, getRanks } from '../utils'
 
 const GamePage: FC = () => {
-  const { ranks: context, dispatch } = useContext(RanksContext)
   const gameRef = useRef<Game | null>(null)
   const [, setGameState] = useState(false)
 
@@ -24,9 +20,7 @@ const GamePage: FC = () => {
   }
 
   const handleResetGame = () => {
-    if (gameRef.current?.isComplete) {
-      dispatch({ type: ACTION_TYPE.ADD, payload: gameRef.current.step })
-    }
+    if (gameRef.current?.isComplete) addRank(getRanks(), gameRef.current.step)
 
     gameRef.current = null
     setTimeout(() => gameRef.current = new Game(), DELAY_MS)
@@ -41,10 +35,6 @@ const GamePage: FC = () => {
 
     return () => clearInterval(intervalId)
   }, [])
-
-  useEffect(() => console.log(context), [context])
-
-  useEffect(() => {addRank(context)}, [context])
 
   return (
     <Board game={gameRef.current} onPress={handleFlipCard} onReset={handleResetGame} />
