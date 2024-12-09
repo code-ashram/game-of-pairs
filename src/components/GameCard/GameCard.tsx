@@ -1,6 +1,7 @@
 import { FC } from 'react'
 
-import { Card } from '../../../models/models.ts'
+import { Card } from '../../models'
+
 
 type Props = {
   card: Card
@@ -9,11 +10,11 @@ type Props = {
 
 const GameCard: FC<Props> = ({ card, onPress }) => (
   <div className="cardContainer" onClick={() => onPress(card)}>
-    <div className={`card ${card.isOpen ? 'open' : ''}`}>
-      <div className="cardFace front"></div>
+      <div className={`card ${card.isOpen ? 'open' : ''}`}>
+        <div className="cardFace front"></div>
 
-      <div className="cardFace back">{card.value}</div>
-    </div>
+        <div className="cardFace back">{card.value}</div>
+      </div>
   </div>
 )
 
