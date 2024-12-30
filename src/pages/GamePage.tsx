@@ -4,7 +4,8 @@ import Board from '../components/Board'
 
 import { Card, Game } from '../models'
 import { DELAY_MS } from '../constants'
-import { addRank, getRanks } from '../utils'
+import { addRank } from '../utils'
+import { createRank } from '../api/client.ts'
 
 const GamePage: FC = () => {
   const gameRef = useRef<Game | null>(null)
@@ -20,7 +21,7 @@ const GamePage: FC = () => {
   }
 
   const handleResetGame = () => {
-    if (gameRef.current?.isComplete) addRank(getRanks(), gameRef.current.step)
+    if (gameRef.current?.isComplete) createRank(addRank(gameRef.current.step)).then(r => r)
 
     gameRef.current = null
     setTimeout(() => gameRef.current = new Game(), DELAY_MS)

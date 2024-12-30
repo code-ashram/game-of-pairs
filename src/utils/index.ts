@@ -1,6 +1,5 @@
 import { Card, Rank } from '../models'
 import { DELAY_MS } from '../constants'
-import user from '../img/user.png'
 
 export const showCards = (cards: Card[]): void => {
   setTimeout(() => cards.forEach((card: Card) => card.flip()), DELAY_MS)
@@ -22,26 +21,15 @@ export const getRandomInt = (min: number = 1, max: number = 99): number => {
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
-export const addRank = (list: Rank[], steps: number) =>
-  localStorage.setItem('ranks', JSON.stringify(list = [...list, {
+export const addRank = (steps: number): Rank =>
+  ({
     id: String(getRandomInt()),
     user: 'Unknown user',
     time: new Date().toISOString(),
     steps,
-    photo: user,
+    photo: 'https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile-thumbnail.png',
     comment: 'Интересная игра!'
-  }]))
-
-export const getRanks = (): Rank[] => {
-  const item = localStorage.getItem('ranks')
-  return item ? JSON.parse(item) : []
-}
-
-
-// export const getRanks = (): Rank[] =>
-//   localStorage.getItem('ranks')
-//     ? JSON.parse('ranks')
-//     : []
+  })
 
 export const uuidToNumber = (uuid: string): string =>
   parseInt(uuid.replace(/-/g, '').slice(0, 13), 16).toString()

@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { Rank } from '../models'
-import mockData from './mockData.ts'
 
 const BASE_URL = 'http://localhost:3000'
 
@@ -12,10 +11,10 @@ export const getRanks = async (): Promise<Rank[]> =>
   client.get<Rank[]>(`/ranks`)
     .then((response) => response.data)
 
-export const getRank = async (id: string): Promise<Rank> =>
-  new Promise((resolve, reject) =>
-    setTimeout(() => {
-      const rank = mockData.find((rank) => rank.id === id)
-      if (rank) resolve(rank)
-      else reject('rank was not founded')
-    }, 2000))
+export const getRank = async (id: string | undefined): Promise<Rank> =>
+  client.get<Rank>(`/ranks/${id}`)
+    .then((response) => response.data)
+
+export const createRank = async (rank: Rank): Promise<Rank> =>
+  client.post<Rank>(`/ranks`, rank)
+    .then((response) => response.data)

@@ -1,24 +1,19 @@
-import { FC, useMemo } from 'react'
-import { useParams } from 'react-router-dom'
+import { FC } from 'react'
+import { LoaderFunction, useLoaderData } from 'react-router-dom'
 import { Image } from '@nextui-org/react'
 
-import { convertTime, getRanks } from '../utils'
+import { Rank } from '../models'
+import { convertTime } from '../utils'
+import { getRank } from '../api/client.ts'
 
 // eslint-disable-next-line react-refresh/only-export-components
-// export const rankLoader: LoaderFunction = async ({ params }): Promise<Record<'rank', Rank>> => {
-//   const rank = await getrank(Number(params.rankId))
-//   return { rank }
-// }
+export const rankLoader: LoaderFunction = async ({ params }): Promise<Record<'rank', Rank>> => {
+  const rank = await getRank(params.rankId)
+  return { rank }
+}
 
 const RankInfo: FC = () => {
-  // const { rank } = useLoaderData() as Record<'rank', Rank>
-  const ranks = useMemo(() => getRanks(), [])
-  const { rankId } = useParams()
-
-  const rank = useMemo(() =>
-    rankId
-      ? ranks.find((rank) => rank.id === rankId)
-      : null, [rankId, ranks])
+  const { rank } = useLoaderData() as Record<'rank', Rank>
 
   return (
     <>
