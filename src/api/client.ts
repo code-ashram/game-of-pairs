@@ -1,8 +1,16 @@
+import axios from 'axios'
 import { Rank } from '../models'
 import mockData from './mockData.ts'
 
+const BASE_URL = 'http://localhost:3000'
+
+const client = axios.create({
+  baseURL: BASE_URL
+})
+
 export const getRanks = async (): Promise<Rank[]> =>
-  new Promise((resolve) => setTimeout(() => resolve(mockData), 2000))
+  client.get<Rank[]>(`/ranks`)
+    .then((response) => response.data)
 
 export const getRank = async (id: string): Promise<Rank> =>
   new Promise((resolve, reject) =>

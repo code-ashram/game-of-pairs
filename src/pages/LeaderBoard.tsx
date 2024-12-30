@@ -1,23 +1,20 @@
-import { FC, useEffect, useMemo } from 'react'
+import { FC } from 'react'
+import { LoaderFunction, useLoaderData } from 'react-router-dom'
 
 import RanksList from '../components/RanksList'
+
 import { getRanks } from '../utils'
-
-// import { Link, LoaderFunction, useLoaderData } from 'react-router-dom'
-
-// import { getranks } from '../api/client.ts'
-// import { Rank } from '../models'
+import { Rank } from '../models'
 
 // eslint-disable-next-line react-refresh/only-export-components
-// export const ranksLoader: LoaderFunction = async (): Promise<Record<'ranks', Rank[]>> => {
-//   const ranks = await getranks()
-//   return { ranks }
-// }
+export const ranksLoader: LoaderFunction = async (): Promise<Record<'ranks', Rank[]>> => {
+  const ranks = getRanks()
+  return { ranks }
+}
 
 const LeaderBoard: FC = () => {
-  // const { ranks } = useLoaderData() as Record<'ranks', Rank[]>
-  const ranks = useMemo(() => getRanks(), [])
-  useEffect(() => console.log(ranks), [ranks])
+  const { ranks } = useLoaderData() as Record<'ranks', Rank[]>
+  console.log(ranks)
 
   return (
     <>
