@@ -3,12 +3,13 @@ import { LoaderFunction, useLoaderData } from 'react-router-dom'
 
 import RanksList from '../components/RanksList'
 
-import { getRanks } from '../utils'
+
 import { Rank } from '../models'
+import { getRanks } from '../api/client.ts'
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const ranksLoader: LoaderFunction = async (): Promise<Record<'ranks', Rank[]>> => {
-  const ranks = getRanks()
+  const ranks = await getRanks()
   return { ranks }
 }
 
