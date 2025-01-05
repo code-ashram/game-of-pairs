@@ -22,8 +22,8 @@ const RankInfo: FC = () => {
 
         <div className="justify-self-center">
           <Image
-            width={200}
-            height={200}
+            // width={200}
+            height={300}
             alt="NextUI hero Image with delay"
             src={rank?.photo}
           />
