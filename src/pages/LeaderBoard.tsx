@@ -15,7 +15,6 @@ export const ranksLoader: LoaderFunction = async (): Promise<Record<'ranks', Ran
 
 const LeaderBoard: FC = () => {
   const { ranks } = useLoaderData() as Record<'ranks', Rank[]>
-  console.log(ranks)
 
   return (
     <>

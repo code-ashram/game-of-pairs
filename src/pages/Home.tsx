@@ -1,15 +1,22 @@
-import '../App.scss'
 import { Link, Outlet, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
+import '../App.scss'
+import { User } from '../store/userReducer.ts'
+import LoginForm from '../components/LoginForm'
+
 const Home = () => {
   const navigate = useNavigate()
-  const [game, setGame] = useState<boolean>(true)
+  const [user, setUser] = useState<User>({ userName: null, isLogin: false })
+
+  const handleLogin = (name: string) => {
+    setUser({ userName: name, isLogin: true })
+  }
 
   useEffect(() => {
-    if (game) navigate('/game')
-    setGame(false)
-  }, [game, navigate])
+    if (user.isLogin) navigate('/game')
+
+  }, [navigate, user.isLogin])
 
   return (
     <main>
@@ -20,6 +27,8 @@ const Home = () => {
       <section className="wrapper">
         <Outlet />
       </section>
+
+      <LoginForm userName={user.userName} isOpen={true} onSubmit={handleLogin} />
     </main>
   )
 }
