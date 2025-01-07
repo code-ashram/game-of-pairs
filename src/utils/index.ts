@@ -21,10 +21,10 @@ export const getRandomInt = (min: number = 1, max: number = 99): number => {
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
-export const addRank = (steps: number): Rank =>
+export const addRank = (steps: number, user: string): Rank =>
   ({
     id: String(getRandomInt()),
-    user: 'Unknown user',
+    user,
     time: new Date().toISOString(),
     steps,
     photo: 'https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile-thumbnail.png',

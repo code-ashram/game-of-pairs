@@ -4,7 +4,6 @@ export const enum ACTION_TYPE {
 
 export type User = {
   userName: string | null,
-  isLogin: boolean
 }
 
 export type LoginAction = {
@@ -18,8 +17,7 @@ const userReducer = (state: User, { type, payload }: Action) => {
   switch (type) {
     case ACTION_TYPE.LOGIN:
       return {
-        username: payload.userName,
-        isLogin: true
+        userName: payload.userName
       }
     default: {
       return state

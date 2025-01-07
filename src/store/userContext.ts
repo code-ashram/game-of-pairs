@@ -6,9 +6,8 @@ type ContextType = {
   dispatch: Dispatch<Action>
 }
 
-export const userInitialState = {
-  userName: null,
-  isLogin: false
+export const userInitialState: User = {
+  userName: null
 }
 
 const initialValue: ContextType = {

@@ -1,4 +1,4 @@
-import { FC, FormEvent } from 'react'
+import { ChangeEvent, FC, FormEvent, useState } from 'react'
 import {
   Modal,
   ModalContent,
@@ -12,12 +12,16 @@ import {
 
 type Props = {
   isOpen: boolean
-  userName: string
-  onSubmit: () => void
+  onSubmit: (userName: string) => void
 }
 
-const LoginForm: FC<Props> = ({ isOpen, userName, onSubmit }) => {
+const LoginForm: FC<Props> = ({ isOpen, onSubmit }) => {
+  const [value, setValue] = useState('')
   const { onOpenChange } = useDisclosure()
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value)
+  }
 
   return (
     <>
@@ -31,15 +35,17 @@ const LoginForm: FC<Props> = ({ isOpen, userName, onSubmit }) => {
           {() => (
             <form onSubmit={(e: FormEvent) => {
               e.preventDefault()
-              onSubmit()
+              console.log(value)
+              onSubmit(value)
             }}>
-              <ModalHeader className="flex flex-col gap-1">Enter your name!</ModalHeader>
+              <ModalHeader className="flex flex-col gap-1">What's your name?</ModalHeader>
               <ModalBody>
                 <Input
                   isRequired
                   className="max-w-xs"
-                  defaultValue={userName}
-                  label="User Name"
+                  onChange={handleChange}
+                  defaultValue={''}
+                  label="Enter your name here!"
                   type="text"
                 />
               </ModalBody>

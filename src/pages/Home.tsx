@@ -1,22 +1,26 @@
 import { Link, Outlet, useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect, useReducer } from 'react'
 
-import '../App.scss'
-import { User } from '../store/userReducer.ts'
+import UserContext, { userInitialState } from '../store/userContext.ts'
+import userReducer, { ACTION_TYPE } from '../store/userReducer.ts'
 import LoginForm from '../components/LoginForm'
 
+import '../App.scss'
+
 const Home = () => {
+  const [user, dispatch] = useReducer(userReducer, userInitialState)
   const navigate = useNavigate()
-  const [user, setUser] = useState<User>({ userName: null, isLogin: false })
 
   const handleLogin = (name: string) => {
-    setUser({ userName: name, isLogin: true })
+    dispatch({
+      type: ACTION_TYPE.LOGIN,
+      payload: { userName: name }
+    })
   }
 
   useEffect(() => {
-    if (user.isLogin) navigate('/game')
-
-  }, [navigate, user.isLogin])
+    if (user.userName) navigate('/game')
+  }, [navigate, user.userName])
 
   return (
     <main>
@@ -24,11 +28,13 @@ const Home = () => {
         <h1 className="mb-8 text-4xl font-bold underline">Game Of Pairs</h1>
       </Link>
 
-      <section className="wrapper">
-        <Outlet />
-      </section>
+      <LoginForm isOpen={user.userName === null && true} onSubmit={handleLogin} />
 
-      <LoginForm userName={user.userName} isOpen={true} onSubmit={handleLogin} />
+      <section className="wrapper">
+        <UserContext.Provider value={{ user, dispatch }}>
+          <Outlet />
+        </UserContext.Provider>
+      </section>
     </main>
   )
 }
